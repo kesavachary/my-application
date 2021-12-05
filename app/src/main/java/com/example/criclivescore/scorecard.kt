@@ -15,7 +15,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import net.smitpatel.cricketscore.ListItem
+import com.example.criclivescore.ListItem
 import org.json.JSONArray
 import org.json.JSONException
 import java.lang.Exception

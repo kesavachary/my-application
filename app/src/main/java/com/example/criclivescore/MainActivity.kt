@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         val request =
             JsonObjectRequest(Request.Method.GET, url, null, object : Listener<JSONObject?>(),
                 Response.Listener<JSONObject> {
-                fun onResponse(response: JSONObject) {
+                override fun onResponse(response: JSONObject) {
                     progressDialog.dismiss()
                     try {
                         val jsonArray = response.getJSONArray("matches")

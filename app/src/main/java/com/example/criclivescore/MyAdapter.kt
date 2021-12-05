@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import net.smitpatel.cricketscore.ListItem
+import com.example.criclivescore.ListItem
 
 class MyAdapter(
     private val listItems: List<ListItem>,

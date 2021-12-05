@@ -1,4 +1,4 @@
-package net.smitpatel.cricketscore
+package com.example.criclivescore
 
 class ListItem {
     var header: String
