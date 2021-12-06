@@ -8,20 +8,19 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.google.androidgamesdk.gametextinput.Listener
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.ArrayList
-import com.example.criclivescore.ListItem
+import java.util.*
+
 class MainActivity : AppCompatActivity() {
     //    lateinit var binding: ListItemBinding
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
     lateinit var adapter: RecyclerView.Adapter<*>
     lateinit var listItems: MutableList<ListItem>
     lateinit var rq: RequestQueue
@@ -34,8 +33,8 @@ class MainActivity : AppCompatActivity() {
 //        binding.textViewDetails
 
 
-        recyclerView?.setHasFixedSize(true)
-        recyclerView?.setLayoutManager(LinearLayoutManager(this))
+        recyclerView.setHasFixedSize(true)
+        recyclerView.setLayoutManager(LinearLayoutManager(this))
         listItems = ArrayList()
         rq = Volley.newRequestQueue(this)
         jsonParse()
