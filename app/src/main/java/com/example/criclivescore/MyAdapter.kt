@@ -1,6 +1,5 @@
 package com.example.criclivescore
 
-import android.R
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.criclivescore.ListItem
+
 
 class MyAdapter(
     private val listItems: List<ListItem>,
@@ -19,7 +18,7 @@ class MyAdapter(
     RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val v: View = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.activity_list_item, viewGroup, false)
+            .inflate(R.layout.list_item, viewGroup, false)
         return ViewHolder(v)
     }
 
@@ -35,7 +34,7 @@ class MyAdapter(
         viewHolder.textViewDetails.text = listItem.details
     }
 
-    fun matchInfo(listItem: ListItem) {
+    private fun matchInfo(listItem: ListItem) {
         val intent = Intent(context, matchInfo::class.java)
         intent.putExtra("matchId", listItem.matchId)
         context.startActivity(intent)
@@ -46,16 +45,10 @@ class MyAdapter(
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textViewHead: TextView
-        var textViewDescription: TextView
-        var linearLayout: LinearLayout
-        var textViewDetails: TextView
+        var textViewHead: TextView = itemView.findViewById<View>(R.id.textViewHead) as TextView
+        var textViewDescription: TextView = itemView.findViewById<View>(R.id.textViewDescription) as TextView
+        var linearLayout: LinearLayout = itemView.findViewById<View>(R.id.linearLayout) as LinearLayout
+        var textViewDetails: TextView = itemView.findViewById(R.id.textViewDetails)
 
-        init {
-            textViewHead = itemView.findViewById<View>(R.id.textViewHead) as TextView
-            textViewDescription = itemView.findViewById<View>(R.id.textViewDescription) as TextView
-            textViewDetails = itemView.findViewById(R.id.textViewDetails)
-            linearLayout = itemView.findViewById<View>(R.id.linearLayout) as LinearLayout
-        }
     }
 }

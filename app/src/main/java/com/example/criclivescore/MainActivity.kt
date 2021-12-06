@@ -1,7 +1,6 @@
 package com.example.criclivescore
 
-import android.R
-import android.app.LauncherActivity.ListItem
+
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.os.Handler
@@ -16,19 +15,26 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.Volley
 import com.google.androidgamesdk.gametextinput.Listener
+import com.example.criclivescore.ListItem
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.ArrayList
-import javax.xml.transform.ErrorListener
 
 class MainActivity : AppCompatActivity() {
-    private var recyclerView: RecyclerView? = null
-    private var adapter: RecyclerView.Adapter<*>? = null
-    private var listItems: MutableList<ListItem>? = null
-    private var rq: RequestQueue? = null
-    var mHandler: Handler? = null
+    //    lateinit var binding: ListItemBinding
+    lateinit var recyclerView: RecyclerView
+    lateinit var adapter: RecyclerView.Adapter<*>
+    lateinit var listItems: MutableList<ListItem>
+    lateinit var rq: RequestQueue
+    lateinit var mHandler: Handler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        binding=DataBindingUtil.setContentView(this,R.layout.activity_list_item)
+//        binding.textViewHead
+//        binding.textViewDescription
+//        binding.textViewDetails
+
+
         recyclerView?.setHasFixedSize(true)
         recyclerView?.setLayoutManager(LinearLayoutManager(this))
         listItems = ArrayList()
@@ -89,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                                         " Runs: " + bowler.getString("r") +
                                         " Wickets: " + bowler.getString("w")
                             }
-                            val item = ListItem(title, status, matchId, details)
+                            val item = com.example.criclivescore.ListItem(title, status, matchId, details)
                             listItems!!.add(item)
                         }
                         adapter = MyAdapter(listItems, applicationContext, "MainActivity")
@@ -98,8 +104,8 @@ class MainActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                 }
-            }, object : ErrorListener() {
-                fun onErrorResponse(error: VolleyError) {
+            }, object : Response.ErrorListener {
+                override fun onErrorResponse(error: VolleyError) {
                     error.printStackTrace()
                 }
             })
